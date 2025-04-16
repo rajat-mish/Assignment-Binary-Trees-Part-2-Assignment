@@ -1,0 +1,47 @@
+
+#include <iostream>
+using namespace std;
+
+void incDecSequence(int i, int n) {
+    if (i > n) return;
+    cout << i << " ";
+    incDecSequence(i + 1, n);
+    if (i < n) cout << i << " ";
+    else cout << i + 1 << " ";
+}
+
+int sumOdd(int a, int b) {
+    if (a > b) return 0;
+    if (a % 2 == 0) return sumOdd(a + 1, b);
+    return a + sumOdd(a + 2, b);
+}
+
+bool isPowerOfTwo(int n) {
+    if (n == 1) return true;
+    if (n == 0 || n % 2 != 0) return false;
+    return isPowerOfTwo(n / 2);
+}
+
+int countWays(int n) {
+    if (n == 0) return 1;
+    if (n < 0) return 0;
+    return countWays(n - 1) + countWays(n - 2) + countWays(n - 3);
+}
+
+int main() {
+    int n = 5;
+    incDecSequence(1, n);
+    cout << endl;
+
+    int a = 1, b = 10;
+    cout << sumOdd(a, b) << endl;
+
+    int x = 16, y = 18;
+    cout << (isPowerOfTwo(x) ? "true" : "false") << endl;
+    cout << (isPowerOfTwo(y) ? "true" : "false") << endl;
+
+    int stairs = 4;
+    cout << countWays(stairs) << endl;
+
+    return 0;
+}
